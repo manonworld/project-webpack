@@ -4,7 +4,7 @@ build:
 run:
   web-installer:
     command:
-      - npm install
-      - npm run build-prod
-      - npm run start
+      - yarn install
+      - yarn build-prod
+      - yarn start
     image: web
