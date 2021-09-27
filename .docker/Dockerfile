@@ -6,4 +6,5 @@ WORKDIR /fend
 
 RUN yarn install
 
+# Default port for heroku
 EXPOSE 8080
