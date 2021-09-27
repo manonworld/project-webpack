@@ -1,0 +1,8 @@
+.docker
+.dockerignore
+.git
+.gitignore
+heroku.yml
+README.md
+REQUIREMENTS.md
+

@@ -1,0 +1,10 @@
+build:
+  docker:
+    web: .docker/Dockerfile
+run:
+  web-installer:
+    command:
+      - npm install
+      - npm run build-prod
+      - npm run start
+    image: web
