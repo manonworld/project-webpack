@@ -3,17 +3,53 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
+const port = process.env.PORT || 3000;
+
 module.exports = {
     entry: './src/client/index.js',
     mode: 'development',
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     stats: 'verbose',
+    output: {
+        filename: 'bundle.[hash].js'
+    },
+    devServer: {
+        host: 'localhost',
+        port: port,
+        historyApiFallback: true,
+        open: true
+    },
     module: {
         rules: [
             {
-                test: '/\.js$/',
+                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                namedExport: true,
+                            },
+                            sourceMap: true
+                        }
+                    },
+                ]
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                  "style-loader",
+                  "css-loader",
+                  "sass-loader",
+                ],
             }
         ]
     },
@@ -23,11 +59,8 @@ module.exports = {
             filename: "./index.html",
         }),
         new CleanWebpackPlugin({
-            // Simulate the removal of files
             dry: true,
-            // Write Logs to Console
             verbose: true,
-            // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
         })

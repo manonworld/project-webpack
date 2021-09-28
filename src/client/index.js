@@ -1,7 +1,5 @@
-import { checkForName } from './js/nameChecker'
-import { handleSubmit } from './js/formHandler'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
 
-console.log(checkForName);
-
-alert("I EXIST")
-console.log("CHANGE!!");
+ReactDOM.render(<App />, document.getElementById('root'));
