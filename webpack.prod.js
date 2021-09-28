@@ -4,6 +4,18 @@ const HtmlWebPackPlugin = require("html-webpack-plugin")
 
 module.exports = {
     entry: './src/client/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[hash:8].js',
+        sourceMapFilename: '[name].[hash:8].map',
+        chunkFilename: '[id].[hash:8].js'
+    },
+    resolve: {
+        alias: {
+            "react-dom": "@hot-loader/react-dom",
+        },
+        extensions: ['.tsx', '.ts', '.jsx', '.js', '.json', '.css', '.scss'],
+    },
     mode: 'production',
     module: {
         rules: [

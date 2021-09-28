@@ -7,6 +7,18 @@ const port = process.env.PORT || 3000;
 
 module.exports = {
     entry: './src/client/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[hash:8].js',
+        sourceMapFilename: '[name].[hash:8].map',
+        chunkFilename: '[id].[hash:8].js'
+    },
+    resolve: {
+        alias: {
+            "react-dom": "@hot-loader/react-dom",
+        },
+        extensions: ['.tsx', '.ts', '.jsx', '.js', '.json', '.css', '.scss'],
+    },
     mode: 'development',
     devtool: 'inline-source-map',
     stats: 'verbose',
@@ -17,7 +29,8 @@ module.exports = {
         host: 'localhost',
         port: port,
         historyApiFallback: true,
-        open: true
+        open: true,
+        hot: true
     },
     module: {
         rules: [
@@ -53,7 +66,26 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
+                },
+                    vendor: {
+                    chunks: 'initial',
+                    test: 'vendor',
+                    name: 'vendor',
+                    enforce: true
+                }
+            }
+        }
+    },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",

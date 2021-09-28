@@ -12,7 +12,7 @@ Tech stack:
 
     4. Sass
 
-    5. Aylien API
+    5. Meaning Cloud Sentiment API
 
     6. Jest Testing Framework
 

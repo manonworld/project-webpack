@@ -1,14 +1,7 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react';
+import { Header, Loader } from 'semantic-ui-react';
+import ReactDelayRender from 'react-delay-render';
 
-import Layout from './Layout';
+const Loading = () => <Loader active size="massive" />;
 
-const Loading = () => {
-  return (
-    <Layout>
-      <Header as="h3">Loading ...</Header>
-    </Layout>
-  );
-};
-
-export default Loading;
+export default ReactDelayRender({ delay: 300 })(Loading);

@@ -8,7 +8,7 @@ const Home = () => {
     <Layout>
       <p>Project 2</p>
       <p>
-        <Link to="/loading">Loading</Link>
+        Welcome
       </p>
     </Layout>
   );

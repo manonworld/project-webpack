@@ -1,18 +1,18 @@
 import React from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
-
-import Home from './Home';
+import importedComponent from 'react-imported-component';
 import Loading from './Loading';
-import NoMatch from './NoMatch';
+
+const AsyncHome = importedComponent(() => import('./Home'), { LoadingComponent: Loading });
+const AsyncNoMatch = importedComponent(() => import('./NoMatch'), { LoadingComponent: Loading });
 
 const App = () => {
   return (
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/loading" component={Loading} />
-          <Route component={NoMatch} />
+          <Route exact path="/" component={AsyncHome} />
+          <Route component={AsyncNoMatch} />
         </Switch>
       </div>
     </Router>
