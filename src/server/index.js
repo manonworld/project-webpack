@@ -9,13 +9,13 @@ app.use(express.static('dist'))
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
 })
 
-// designates what port the app will listen to for incoming requests
-app.listen(process.env.PORT || 5000, function () {
-    console.log('Example app listening on port ' + process.env.PORT + ' by default!')
+let port = process.env.PORT || 5000;
+
+app.listen(port, function () {
+    console.log('App is listening on port ' + port + ' by default!')
 })
 
 app.get('/test', function (req, res) {

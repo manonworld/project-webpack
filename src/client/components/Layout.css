@@ -7,3 +7,8 @@
     margin-top: 10px !important;
     margin-bottom: 20px !important;
 }
+
+.text-area {
+    margin-top: 20px;
+    width: 100%;
+}

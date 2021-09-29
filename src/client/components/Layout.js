@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
     <Container>
       <Link to="/">
         <Header as="h1" className={h1}>
-          Project 2
+            News Article Evaluator using NLP
         </Header>
       </Link>
       {children}
