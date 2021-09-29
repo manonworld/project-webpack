@@ -7,6 +7,7 @@ const MeaningCloudApi = require('./MeaningCloudApi.js');
 const favicon = require('serve-favicon')
 
 const app = express();
+
 app.use(express.static('dist'));
 app.use(favicon(path.join(__dirname, 'favicon.ico')));
 
@@ -16,8 +17,12 @@ app.get('/', function (req, res) {
 
 const api = new MeaningCloudApi();
 app.get('/query', function (req, res) {
-    let apiRes = api.query(req.query.text);
-    res.send({ some: 'json' });
+    api.query(req.query.text, req.query.lang)
+        .then((data) => (
+            res.send({ response: data })
+        )).catch((error) => (
+            console.log(JSON.stringify(error))
+        ));
 });
 
 let port = process.env.PORT || 5000;
