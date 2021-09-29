@@ -47,7 +47,7 @@ class Form extends Component {
                         <br /><br />
                         <Dropdown
                             button
-                            className='icon'
+                            className={'icon ' + marginTopWidth}
                             floating
                             labeled
                             icon='world'

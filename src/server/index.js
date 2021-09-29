@@ -1,12 +1,14 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-var path = require('path');
+const path = require('path');
 const express = require('express');
 const MeaningCloudApi = require('./MeaningCloudApi.js');
+const favicon = require('serve-favicon')
 
 const app = express();
 app.use(express.static('dist'));
+app.use(favicon(path.join(__dirname, 'favicon.ico')));
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html');
