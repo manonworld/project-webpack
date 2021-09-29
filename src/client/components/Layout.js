@@ -16,7 +16,11 @@ const Layout = ({ children }) => {
       {children}
       <Divider />
       <p className={pullRight}>
-        Made with <Icon name="heart" color="red" /> by &nbsp; <a href="https://manonworld.de" target="_blank">Mosta</a>
+        Made with <Icon name="heart" color="red" /> 
+        by &nbsp; 
+        <a href="https://manonworld.de" target="_blank">
+          Mosta
+        </a>
       </p>
     </Container>
   );

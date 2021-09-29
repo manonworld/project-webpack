@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 
+const dotenv = require('dotenv');
+dotenv.config();
 const port = process.env.PORT || 3000;
 
 module.exports = {
