@@ -64,7 +64,10 @@ class Form extends Component {
                 }
             })
             .then((responseJson) => {
-                alert(JSON.stringify(responseJson));
+                this.setState(() => ({
+                    loading: false
+                }));
+                this.props.update(responseJson);
             })
             .catch((error) => {
                 throw new Error(error);
