@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, TextArea, Dropdown } from 'semantic-ui-react';
+import { Card, Button, TextArea, Dropdown, Label } from 'semantic-ui-react';
 import Langs from './Langs';
 import { marginTopWidth } from './Layout.css';
 
@@ -13,20 +13,14 @@ class Form extends Component {
     };
   
     #handleTextChange = ( event ) => {
+        this.#validateInput();
         let article = event.target.value;
-        let lang = this.state.lang;
         this.setState(() => ({
             article: article !== null 
                 && article !== '' 
                 ? article 
-                : null,
-            disabled: article !== null 
-                && article !== '' 
-                &&  lang !== null 
-                && lang !== '' 
-                ? false 
-                : true
-        }));
+                : null
+        }), () => this.#validateInput());
     };
   
     #handleSubmit = () => {
@@ -38,23 +32,28 @@ class Form extends Component {
 
     #handleDropChange = ( event, data ) => {
         let lang = data.value;
-        let article = this.state.article;
         this.setState(() => ({
             lang,
-            disabled: article !== null 
-                && article !== '' 
-                &&  lang !== null 
-                && lang !== '' 
-                ? false 
-                : true
-        }));
+        }), () => this.#validateInput());
     };
 
-    #sendRequest = () => {
+    #validateInput = () => {
         let articleRegex = new RegExp('^[a-zA-Z .,]{4,2555}$');
         let langRegex = new RegExp('^[a-z]{2}$');
+        let articleVal = this.state.article;
+        let langVal = this.state.lang;
 
-        if ( articleRegex.test(this.state.article) && langRegex.test(this.state.lang) ) {
+        let res = !articleRegex.test(articleVal) || !langRegex.test(langVal);
+
+        this.setState(() => ({
+            disabled: res
+        }));
+
+        return !res;
+    }
+
+    #sendRequest = () => {
+        if ( this.#validateInput() ) {        
             let url = this.#prepareUrl();
             fetch(url).then((response) => {
                 if (response.ok) {
