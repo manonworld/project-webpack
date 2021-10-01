@@ -7,7 +7,7 @@ WORKDIR /fend
 # Default port for heroku
 EXPOSE 8080
 
-CMD ["yarn", "install", "&&", "yarn", "build-prod"]
+CMD ["yarn", "install", "--production=true", "&&", "yarn", "build-prod"]
 
 ENTRYPOINT ["./install.sh"]
 
