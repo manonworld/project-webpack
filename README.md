@@ -35,3 +35,8 @@ App is deployed on heroku using docker containerized solution
 Please check heroku.yml for your reference
 
 URL: https://secret-eyrie-62208.herokuapp.com/
+
+
+# Testing
+
+``` yarn test ```
