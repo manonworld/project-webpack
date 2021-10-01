@@ -1,4 +1,4 @@
 #!/bin/sh
-yarn install
+yarn install --production=true
 yarn build-prod
 yarn start

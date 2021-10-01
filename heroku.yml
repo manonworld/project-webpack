@@ -4,7 +4,7 @@ build:
 run:
   web-installer:
     command:
-      - yarn install
+      - yarn install --production=true --ignore-optional --silent
       - yarn build-prod
       - yarn start
     image: web
