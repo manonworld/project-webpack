@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Segment, Label, List, Header } from 'semantic-ui-react';
-import calculateConfidence from './Progress';
+import CalculateConfidence from './Progress';
 import getVal from './HashMaps/ScoreTag';
 import Sentence from './Sentence';
 
@@ -37,7 +37,7 @@ class Sentiments extends Component {
                             ))}
                         </List>
                         <Label pointing="below">Article Confidence Level</Label>
-                        {calculateConfidence(confidence)}
+                        <CalculateConfidence confidence={confidence} />
                     </Segment>
                 </Container>
             );

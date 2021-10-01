@@ -1,12 +1,18 @@
-class Langs {
+import React, { Component, Fragment } from 'react';
 
-    static getLangs = () => ([
-        {
-            key: 'English',
-            text: 'English',
-            value: 'en',
-        }
-    ]);
+class Langs extends Component {
+
+    static getLangs = () => ([{
+        key: 'English',
+        text: 'English',
+        value: 'en',
+    }]);
+
+    render () {
+        return (
+            <Fragment></Fragment>
+        );
+    }
 
 }
 

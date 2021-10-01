@@ -1,10 +1,10 @@
 import React from 'react';
 import { Progress } from 'semantic-ui-react';
 
-const calculateConfidence = ( confidence ) => (
-    <Progress color='blue' percent={confidence} >
-        {confidence}%
+const CalculateConfidence = ( props ) => (
+    <Progress color='blue' percent={props.confidence} >
+        {props.confidence}%
     </Progress>
 );
 
-export default calculateConfidence;
+export default CalculateConfidence;
