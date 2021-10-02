@@ -3,6 +3,8 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const TerserPlugin = require('terser-webpack-plugin');
 const dotenv = require('dotenv');
+const WorkboxPlugin = require('workbox-webpack-plugin');
+
 dotenv.config();
 const port = process.env.PORT || 3000;
 
@@ -62,6 +64,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
-        })
+        }),
+        new WorkboxPlugin.GenerateSW()
     ]
 }
